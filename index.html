@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" media="all" href="style.css" />
+    <script src="vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="Ventana Centrar" id="app">
+        <div class="grid-container">
+            <div class="grid-itemA1 Cuadros" v-on:click="Jugar(1)"
+            :class="{'CuadrosCirc': mA1 == 1, 'CuadrosTach': mA1 == 2 }"></div>
+            <div class="grid-itemA2 Cuadros" v-on:click="Jugar(2)"
+            :class="{'CuadrosCirc': mA2 == 1, 'CuadrosTach': mA2 == 2 }"></div>
+            <div class="grid-itemA3 Cuadros" v-on:click="Jugar(3)"
+            :class="{'CuadrosCirc': mA3 == 1, 'CuadrosTach': mA3 == 2 }"></div>
+            <div class="grid-itemB1 Cuadros" v-on:click="Jugar(4)"
+            :class="{'CuadrosCirc': mB1 == 1, 'CuadrosTach': mB1 == 2 }"></div>
+            <div class="grid-itemB2 Cuadros" v-on:click="Jugar(5)"
+            :class="{'CuadrosCirc': mB2 == 1, 'CuadrosTach': mB2 == 2 }"></div>
+            <div class="grid-itemB3 Cuadros" v-on:click="Jugar(6)"
+            :class="{'CuadrosCirc': mB3 == 1, 'CuadrosTach': mB3 == 2 }"></div>
+            <div class="grid-itemC1 Cuadros" v-on:click="Jugar(7)"
+            :class="{'CuadrosCirc': mC1 == 1, 'CuadrosTach': mC1 == 2 }"></div>
+            <div class="grid-itemC2 Cuadros" v-on:click="Jugar(8)"
+            :class="{'CuadrosCirc': mC2 == 1, 'CuadrosTach': mC2 == 2 }"></div>
+            <div class="grid-itemC3 Cuadros" v-on:click="Jugar(9)"
+            :class="{'CuadrosCirc': mC3 == 1, 'CuadrosTach': mC3 == 2 }"></div>
+        </div>
+        <div class="Menu">
+            <div class="Boton" v-on:click="Reiniciar"> Reiniciar </div>
+            <p> TURNO: </p>
+            <div class="TurnoCuadro"
+            :class="{'TurnoCuadro1': Turno == 1, 'TurnoCuadro2': Turno == 0 }"></div>
+        </div>
+        <div :class="{'BannerGanar1': ganado == 1, 'BannerGanar2': ganado == 2 }"> {{ Ganador }}</div>
+    </div>
+    <script>
+        var vm = new Vue ({
+            el: "#app", //Elemento
+            data: { 
+                Turno: 0,
+                pos: 0,
+                mA1: 0,
+                mA2: 0,
+                mA3: 0,
+                mB1: 0,
+                mB2: 0,
+                mB3: 0,
+                mC1: 0,
+                mC2: 0,
+                mC3: 0,
+                comp: 0,
+                ganado: 0,
+                Ganador: ""
+            },
+            methods: {
+                // JUGAR
+                Jugar: function (event) {
+                    this.pos= event;
+                    this.comp=0;
+                    if (this.ganado){
+                        this.pos = 0;
+                    }
+                    //POSICIÓN
+                    if (this.pos == 1 && this.mA1 == 0){
+                        this.mA1 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 2 && this.mA2 == 0){
+                        this.mA2 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 3 && this.mA3 == 0){
+                        this.mA3 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 4 && this.mB1 == 0){
+                        this.mB1 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 5 && this.mB2 == 0){
+                        this.mB2 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 6 && this.mB3 == 0){
+                        this.mB3 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 7 && this.mC1 == 0){
+                        this.mC1 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 8 && this.mC2 == 0){
+                        this.mC2 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    if (this.pos == 9 && this.mC3 == 0){
+                        this.mC3 = this.Turno + 1;
+                        this.comp=1;
+                    }
+                    //TURNO
+                    if (this.Turno && this.comp){
+                        this.Turno = 0;
+                    } else if (this.comp) {
+                        this.Turno = 1;
+                    }
+                    //GANAR
+                        //J1
+                    if (this.mA1==1 && this.mA2==1 && this.mA3==1) { this.ganado = 1; } // xxx *** ***
+                    if (this.mB1==1 && this.mB2==1 && this.mB3==1) { this.ganado = 1; } // *** xxx ***
+                    if (this.mC1==1 && this.mC2==1 && this.mC3==1) { this.ganado = 1; } // *** *** xxx
+                    if (this.mA1==1 && this.mB1==1 && this.mC1==1) { this.ganado = 1; } // x** x** x**
+                    if (this.mA2==1 && this.mB2==1 && this.mC2==1) { this.ganado = 1; } // *x* *x* *x*
+                    if (this.mA3==1 && this.mB3==1 && this.mC3==1) { this.ganado = 1; } // **x **x **x
+                    if (this.mA1==1 && this.mB2==1 && this.mC3==1) { this.ganado = 1; } // x** *x* **x
+                    if (this.mA3==1 && this.mB2==1 && this.mC1==1) { this.ganado = 1; } // **x *x* x**
+                        //J2
+                    if (this.mA1==2 && this.mA2==2 && this.mA3==2) { this.ganado = 2; } // xxx *** ***
+                    if (this.mB1==2 && this.mB2==2 && this.mB3==2) { this.ganado = 2; } // *** xxx ***
+                    if (this.mC1==2 && this.mC2==2 && this.mC3==2) { this.ganado = 2; } // *** *** xxx
+                    if (this.mA1==2 && this.mB1==2 && this.mC1==2) { this.ganado = 2; } // x** x** x**
+                    if (this.mA2==2 && this.mB2==2 && this.mC2==2) { this.ganado = 2; } // *x* *x* *x*
+                    if (this.mA3==2 && this.mB3==2 && this.mC3==2) { this.ganado = 2; } // **x **x **x
+                    if (this.mA1==2 && this.mB2==2 && this.mC3==2) { this.ganado = 2; } // x** *x* **x
+                    if (this.mA3==2 && this.mB2==2 && this.mC1==2) { this.ganado = 2; } // **x *x* x**
+                        //Mensaje
+                    if (this.ganado == 1){ this.Ganador = "EL JUGADOR 1 HA GANADO"; }
+                    if (this.ganado == 2){ this.Ganador = "EL JUGADOR 2 HA GANADO"; }
+                    //EMPATE
+                    if (this.mA1 && this.mA2 && this.mA3 && this.mB1 && this.mB2 && this.mB3 && this.mC1 && this.mC2 && this.mC3 && !this.ganado){
+                        alert("Empate");
+                    }
+                },
+                Reiniciar: function (event) {
+                    this.mA1 = 0;
+                    this.mA2 = 0;
+                    this.mA3 = 0;
+                    this.mB1 = 0;
+                    this.mB2 = 0;
+                    this.mB3 = 0;
+                    this.mC1 = 0;
+                    this.mC2 = 0;
+                    this.mC3 = 0;
+                    this.Turno = 0;
+                    this.ganado = 0;
+                    this.Ganador= "";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

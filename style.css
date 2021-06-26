@@ -1,0 +1,112 @@
+/*GRID*/
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns:  1fr 1fr 1fr;
+    width: 38vw;
+    height:38vw; 
+}
+.grid-itemA1 {
+    grid-column: 1/2; 
+    grid-row: 1/2; 
+}
+.grid-itemA2 {
+    grid-column: 2/3; 
+    grid-row: 1/2; 
+}
+.grid-itemA3 {
+    grid-column: 3/4; 
+    grid-row: 1/2; 
+}
+.grid-itemB1 {
+    grid-column: 1/2; 
+    grid-row: 2/3; 
+}
+.grid-itemB2 {
+    grid-column: 2/3; 
+    grid-row: 2/3; 
+}
+.grid-itemB3 {
+    grid-column: 3/4; 
+    grid-row: 2/3; 
+}
+.grid-itemC1 {
+    grid-column: 1/2; 
+    grid-row: 3/4; 
+}
+.grid-itemC2 {
+    grid-column: 2/3; 
+    grid-row: 3/4; 
+}
+.grid-itemC3 {
+    grid-column: 3/4; 
+    grid-row: 3/4; 
+}
+/*ESPECÍFICOS*/
+.Ventana{
+    width: 95vw;
+    height: 95vh;
+}
+.Centrar{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.Cuadros{
+    background-color: blue;
+    border: solid 5px black;
+}
+.CuadrosCirc{
+    background-color: rgb(60, 255, 0);
+}
+.CuadrosTach{
+    background-color: rgb(255, 51, 0);
+}
+.Boton{
+    width: 10vw;
+    height: 10vh;
+    background-color: gray;
+    text-align: center;
+    line-height: 10vh;
+    margin-bottom: 10vh;
+}
+.TurnoCuadro1{
+    width: 12vw;
+    height: 12vw;
+    background-color: rgb(255, 51, 0);
+}
+.TurnoCuadro2{
+    width: 12vw;
+    height: 12vw;
+    background-color: rgb(60, 255, 0);
+}
+.BannerGanar1{
+    height: 30vh;
+    width: 110vmax;
+    background-color: rgb(63, 143, 38);
+    text-align: center;
+    line-height: 30vh;
+    font-size: 13vh;
+    position: fixed;
+}
+.BannerGanar2{
+    height: 30vh;
+    width: 110vmax;
+    background-color: rgb(117, 39, 20);
+    text-align: center;
+    line-height: 30vh;
+    font-size: 13vh;
+    position: fixed;
+}
+/*FLEX*/
+.Menu{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 100vh;
+    background-color: rgb(156, 50, 50);
+    margin-left: 5vw;
+    justify-content: center;
+    align-items: center;
+}
