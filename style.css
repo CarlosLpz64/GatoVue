@@ -1,10 +1,21 @@
+body {
+    background-color: darkcyan;
+}
+
+.CuadrosCirc * {
+  filter: hue-rotate(120deg) brightness(100%);
+}
+.CuadrosTach *{
+  filter: hue-rotate(0deg) brightness(50%) saturate(100%);
+}
 /*GRID*/
 .grid-container {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns:  1fr 1fr 1fr;
     width: 38vw;
-    height:38vw; 
+    height:38vw;
+    z-index: 50;
 }
 .grid-itemA1 {
     grid-column: 1/2; 
@@ -89,6 +100,8 @@
     line-height: 30vh;
     font-size: 13vh;
     position: fixed;
+    z-index: 51;
+    opacity: 0.9;
 }
 .BannerGanar2{
     height: 30vh;
@@ -98,6 +111,8 @@
     line-height: 30vh;
     font-size: 13vh;
     position: fixed;
+    z-index: 51;
+    opacity: 0.9;
 }
 /*FLEX*/
 .Menu{
@@ -110,3 +125,82 @@
     justify-content: center;
     align-items: center;
 }
+/*FONDO ANIMADO*/
+.circle{
+    position: absolute;
+    border-radius: 50%;
+    background: rgb(57, 226, 161);
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+  }
+  
+  .small{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+  
+  .medium{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+  
+  .large{
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+  }
+  
+  .xlarge{
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+  }
+  
+  .xxlarge{
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+  }
+  
+  .shade1{
+    opacity: 0.2;
+  }
+  .shade2{
+    opacity: 0.5;
+  }
+  
+  .shade3{
+    opacity: 0.7;
+  }
+  
+  .shade4{
+    opacity: 0.8;
+  }
+  
+  .shade5{
+    opacity: 0.9;
+  }
+  .ripple-background{
+      z-index: -50;
+  }
+  
+  @keyframes ripple{
+    0%{
+      transform: scale(0.8);
+    }
+    
+    50%{
+      transform: scale(1.2);
+    }
+    
+    100%{
+      transform: scale(0.8);
+    }
+  }
